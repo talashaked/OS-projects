@@ -1,0 +1,55 @@
+maayan.sharon,  tal.shaked3
+Maayan Sharon (205815566), Tal Shaked ((205484116)
+EX: 2
+
+FILES:
+uthreads.cpp - implementation of the uthread library, api given as uthreads.h
+Thread.hpp - a class that represents a thread
+README
+Makefile
+
+REMARKS:
+
+ANSWERS:
+
+1.
+One reasonable use of user level threads is using them a proccess that requires simultanous calculations.
+for example a sorting method such as quicksort.
+each step in the sorting could be a user level thread, existing in parallel to the other steps.
+The user-level thread has lower overhead than the kernel level threads and moving between user-threads is realtively
+fast as well.
+Additionally because user-level threads don't actually work in parallel, the resources for each thread to calculate
+its means are free for its use.
+
+
+2.
+Advantages :
+#   By opening a process for each tab we make sure "protect" each process from all the others,
+    by requiring the OS to communicate between them we make sure each process is isolated.
+#    we can also decide to kill a one process when it is for some reason terminated while keeping the others, so even if
+    one tab has an issue, the others will continue running.
+#   debugging is easier with processes than with threads, as we saw in class.
+Disadvantages :
+#   the high overhead we get from opening a new process for each tab, in comparison to kernel level threads.
+
+
+3. the user is typing "kill <pid>" command in the shell using the keyboard and pressing enter,
+an interupt is invoked to the cpu,
+which the OS takes care of by sending a signal to the process, SIGTERM by default, which is recognized by its id,
+given as the second word in the command.
+The CPU finishes the current command he was doing, and then handles the signal.
+By that, the current process that was running is interupted,
+and then the process(which id is "pid") handles the signal by terminating the process.
+
+
+4. Real time is the actual real time, that the CPU requires in order to complete a job, overhead inclulded,
+when virtual time is the "pure" time the CPU required preform the task, assuming there were no interupts involved in the
+execution. If there were such interupts - the virtual time doesn't include the time handling them (without overhead).
+
+example for real time - is the first ex1 - when we compared the time measurements in different machines/platforms -
+so we sampled the real time it takes to run the whole program (with overhead).
+
+example for virtual time - in this ex we use measured time in terms of virtual time, since we wanted to measure the pure
+time a thread actually runs on the cpu.
+
+Thank you
